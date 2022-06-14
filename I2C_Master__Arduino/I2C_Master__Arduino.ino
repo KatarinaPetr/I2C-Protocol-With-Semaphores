@@ -91,9 +91,6 @@ void onStart(){
       Serial.println("TRANSFER HAS STARTED!");
     }else{
       start = false;
-      //digitalWrite(YELLOW, LOW);
-     //digitalWrite(GREEN, LOW);
-      //digitalWrite(RED,LOW);
     }
   }else{
     input="";
