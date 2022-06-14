@@ -85,12 +85,15 @@ void loop() {
 
 void onStart(){
   if(Serial.available()>0){
-    input=Serial.readString();
-    if (input.compareTo("start")){
+    input=Serial.readStringUntil('\n');
+    if (input.equals("start")){
       start = true;
       Serial.println("TRANSFER HAS STARTED!");
     }else{
       start = false;
+      //digitalWrite(YELLOW, LOW);
+     //digitalWrite(GREEN, LOW);
+      //digitalWrite(RED,LOW);
     }
   }else{
     input="";
@@ -103,15 +106,15 @@ void receved(){
     int number = Wire.read();
     //1 for green, 2 for yellow, 3 for red
     if (number == 1) {
-      Serial.println("SEMAFOR 2 -> ALLOWED PASSAGE!");
+      Serial.println("SEMAPHORE 2 -> ALLOWED PASSAGE!");
     }else if (number == 2) {
-      Serial.println("SEMAFOR 2 -> FORBIDDEN PASSAGE!");
+      Serial.println("SEMAPHORE 2 -> FORBIDDEN PASSAGE!");
     }else if (number == 3) {
-      Serial.println("SEMAFOR 2 -> FORBIDDEN PASSAGE!");
+      Serial.println("SEMAPHORE 2 -> FORBIDDEN PASSAGE!");
     }else if (number == 4 ) {
-      Serial.println("SEMAFOR 2 -> FORBIDDEN PASSAGE!");
+      Serial.println("SEMAPHORE 2 -> FORBIDDEN PASSAGE!");
     }else {
-      Serial.println("SEMAFOR 2 -> DEAD!");
+      Serial.println("SEMAPHORE 2 -> DEAD!");
     }
   }
 }
